@@ -8,15 +8,108 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!--Font Awesome-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+
   <!-- Stylesheets -->
   <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
   <link rel="stylesheet" href="{% static 'css/index.css' %}">
-  
+
   <title>Landing Page</title>
 </head>
 
 <body>
-  
+
+  <nav class="navbar justify-content-between">
+    <img src="{% static 'images/logo.png' %}" alt="Logo" />
+
+    <div class="auth-btns">
+      <button type="button" class="login-btn">LOGIN</button>
+      <button type="button" class="signup-btn">SIGN UP</button>
+    </div>
+  </nav>
+
+  <hr>
+
+  <div class="welcome-section">
+    <div class="container">
+      <div class="welcome-txt">
+        <h2>Join, <span class="pink-txt">Connect</span> & Enjoy!</h2>
+        <p>Welcome to <span class="blue-txt">CONNECT</span>, a digital heaven designed to help you stay in touch <br>
+          with your friends and family around the world!</p>
+        <button type="button" class="login-btn">JOIN US</button>
+      </div>
+
+      <img src="{% static 'images/welcome_img.png' %}" alt="Background Image" />
+    </div>
+  </div>
+
+  <div class="meet-section">
+    <div class="container">
+      <img src="{% static 'images/meet_img.png' %}" alt="Background Image" />
+
+      <div class="meet-txt">
+        <h2>Meet <span class="blue-txt">New People</span> All Over The World</h2>
+        <p>Make friends and easily grow your network with just a few clicks!</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="org-section">
+    <div class="container">
+      <div class="org-txt">
+        <h2>Explore <span class="pink-txt">Various Organizations</span> <br> That Fit Your Interests</h2>
+        <p>Discover and connect with numerous organizations in your niche and never miss <br> out on new updates!</p>
+      </div>
+
+      <img src="{% static 'images/org_img.png' %}" alt="Background Image" />
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="container">
+      <div class="logo-section">
+        <img src="{% static 'images/logo.png' %}" alt="Logo" />
+        <p>The new way to stay <br> connected all day</p>
+      </div>
+
+      <div class="social">
+        <h5>FOLLOW US</h5>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/shalyne-waweru-b2b965212/" class="fab fa-linkedin"></a>
+          <a href="https://github.com/Shalyne-Waweru" class="fab fa-github"></a>
+          <a href="https://www.facebook.com/shalyne.wangari" class="fab fa-facebook"></a>
+        </div>
+      </div>
+
+      <div class="newsletter">
+        <div class="vl"></div>
+        <h4>Subscribe To Our Newsletter</h4>
+        <form class="form-inline">
+          <input class="form-control mr-sm-2" type="email" placeholder="Enter Email" aria-label="Search">
+          <button class="subscribe-btn my-2 my-sm-0" type="submit">SUBSCRIBE</button>
+        </form>
+      </div>
+
+    </div>
+
+    <hr class="footer-hr">
+
+    <div class="copyright-section">
+      <div class="container">
+        <p> © 2022 Connect. All Rights Reserved.</p>
+
+        <div class="terms-section">
+          <p class="privacy">PRIVACY POLICY</p>
+          <p>TERMS AND CONDITIONS</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
