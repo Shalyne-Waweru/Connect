@@ -25,3 +25,9 @@ def timeline(request):
   View function that renders the timeline page and its data
   '''
   return render(request, 'timeline.html')
+
+def profile(request):
+  '''
+  View function that renders the profile page and its data
+  '''
+  return render(request, 'profile.html')

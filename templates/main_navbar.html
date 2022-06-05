@@ -9,8 +9,9 @@
   </form>
 
   <div class="auth-actions">
+    <a href="{% url 'timelinePage' %}"><i class="fas fa-home"></i></a>
     <i class="fas fa-plus-circle" data-toggle="modal" data-target="#exampleModalCenter"></i>
-    <i class="fas fa-user-circle"></i>
+    <a href="{% url 'profilePage' %}"><i class="fas fa-user-circle"></i></a>
     <button type="button" class="logout-btn"><a href="#">LOGOUT</a></button>
   </div>
 
