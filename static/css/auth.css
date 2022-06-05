@@ -9,11 +9,68 @@ body {
   background-attachment: fixed;
 }
 
+/* Navbar Section */
+.navbar {
+  margin-left: 100px;
+  margin-right: 100px;
+  align-items: center;
+}
+
+.navbar img {
+  width: 150px;
+}
+
+.auth-btns {
+  margin-top: 20px;
+}
+
+.login-btn {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  color: white;
+  background-color: #2072FE;
+  font-family: 'Charm', 'sans-serif';
+  font-weight: bold;
+  width: 100px;
+  margin-right: 30px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.login-btn a, .login-btn a:visited {
+  color: white;
+  text-decoration: none;
+}
+
+.login-btn:hover, .signup-btn:hover{
+  background-color: black;
+  color: white;
+}
+
+.signup-btn {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  color: black;
+  background-color: #fe96e1a9;
+  font-family: 'Charm', 'sans-serif';
+  font-weight: bold;
+  width: 100px;
+  cursor: pointer;
+}
+
+hr {
+  background: white;
+  margin-top: -5px;
+  width: 100%;
+}
+
 .container {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-top: 100px;
+  margin-top: 50px;
   max-width: 90% !important;
 }
 
@@ -58,7 +115,7 @@ form img {
   background-color: #E4EDFD;
 }
 
-.login-btn {
+.auth-login-btn {
   border: none;
   border-radius: 5px;
   padding: 10px;
@@ -72,7 +129,7 @@ form img {
   margin-top: 10px;
 }
 
-.login-btn a, .login-btn a:visited {
+.auth-login-btn a, .auth-login-btn a:visited {
   color: white;
   text-decoration: none;
 }

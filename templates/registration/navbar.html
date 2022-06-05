@@ -1,0 +1,12 @@
+{% load static %}
+
+<nav class="navbar justify-content-between">
+  <a href="{% url 'landingPage' %}"><img src="{% static 'images/logo.png' %}" alt="Logo" /></a>
+
+  <div class="auth-btns">
+    <button type="button" class="login-btn"><a href="{% url 'loginPage' %}">LOGIN</a></button>
+    <button type="button" class="signup-btn">SIGN UP</button>
+  </div>
+</nav>
+
+<hr>
