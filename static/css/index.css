@@ -38,6 +38,11 @@ body {
   margin-bottom: 20px;
 }
 
+.login-btn a, .login-btn a:visited {
+  color: white;
+  text-decoration: none;
+}
+
 .login-btn:hover, .signup-btn:hover{
   background-color: black;
   color: white;
