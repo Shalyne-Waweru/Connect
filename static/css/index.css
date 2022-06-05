@@ -38,7 +38,7 @@ body {
   margin-bottom: 20px;
 }
 
-.login-btn a, .login-btn a:visited {
+.login-btn a, .login-btn a:visited, .signup-btn a, .signup-btn a:visited {
   color: white;
   text-decoration: none;
 }

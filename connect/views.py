@@ -13,3 +13,9 @@ def login(request):
   View function that renders the login page and its data
   '''
   return render(request, 'registration/login.html')
+
+def signup(request):
+  '''
+  View function that renders the signup page and its data
+  '''
+  return render(request, 'registration/signup.html')
