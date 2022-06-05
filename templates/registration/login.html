@@ -19,10 +19,11 @@
       <label for="exampleInputPassword1">Password</label>
       <input type="password" class="form-control" id="exampleInputPassword1">
     </div>
-    <button type="submit" class="auth-login-btn"><a href="#">LOGIN</a></button>
+    <button type="submit" class="auth-login-btn"><a href="{% url 'timelinePage' %}">LOGIN</a></button>
 
-    <p>Don’t have an account? <span class="signup-txt"><a href="#">SIGN UP</a></span></p>
+    <p>Don’t have an account? <span class="redirect-txt"><a href="{% url 'signupPage' %}">SIGN UP</a></span></p>
   </form>
+
 </div>
 
 {% endblock %}

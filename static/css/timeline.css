@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Charm&display=swap');
+
+/* Navbar Section */
+.navbar {
+  padding-left: 80px;
+  padding-right: 80px;
+  align-items: center;
+  background-color: #A9C9FF;
+  background-image: linear-gradient(180deg, #A9C9FF 0%, #FFBBEC 80%);
+}
+
+.navbar img {
+  width: 150px;
+}
+
+.form-inline button{
+  border: none;
+  background-color: transparent;
+}
+
+.form-inline button .fab {
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.auth-actions {
+  padding-top: 20px;
+}
+
+.auth-actions .fas {
+  font-size: 25px;
+  margin-right: 30px;
+  cursor: pointer;
+}
+
+.logout-btn {
+  border: none;
+  border-radius: 5px;
+  padding: 8px;
+  color: white;
+  background-color: #2072FE;
+  font-family: 'Charm', 'sans-serif';
+  font-weight: bold;
+  width: 80px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.logout-btn a, .logout-btn a:visited {
+  color: white;
+  text-decoration: none;
+}
+
+.loout-btn:hover{
+  background-color: black;
+  color: white;
+}
+
+/* Post Section */
+.container {
+  margin-top: 50px;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.col-md-8 {
+  border: 1px solid black;
+  margin-bottom: 40px;
+  border-radius:5px;
+  padding: 0px;
+}
+
+/* Profile Pic & Username Section */
+.col-md-8 .user-credentials {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.col-md-8 .user-credentials img {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.col-md-8 .user-credentials p {
+  margin-top: 8px;
+}
+
+/* Post Image Section */
+.post-image img {
+  width: 100%;
+  height: 20%;
+  padding: 0px;
+  margin: 0px;
+}
+
+/* Post Actions Section */
+.actions-n-time {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-top: 20px;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.likes {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 30px;
+}
+
+.likes .far {
+  font-size: 25px;
+  color: #FA00B4;
+  cursor: pointer;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comments .far {
+  font-size: 25px;
+}
+
+/* Caption Section */
+.caption {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+/* View Comments Section */
+.comments-btn h6 {
+  font-weight: bold;
+  padding-left: 30px;
+  padding-right: 30px;
+  cursor: pointer;
+}
+
+.comments-btn h6:hover {
+  text-decoration: underline;
+}
+
+/* Comment Form Section */
+.col-md-8 form {
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.col-md-8 form input {
+  width: 80%;
+  border: 1px solid gray;
+}
+
+.add-comment-btn {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 8px;
+  background-color: black;
+  font-family: 'Charm', 'sans-serif';
+  font-weight: bold;
+  cursor: pointer;
+  width: 100px;
+}

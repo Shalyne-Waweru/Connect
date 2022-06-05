@@ -1,0 +1,100 @@
+{% extends "main_base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="user-credentials">
+        <img src="{% static 'images/person.jpeg' %}" alt="Profile Image" />
+        <p><strong>username</strong></p>
+      </div>
+
+      <div class="post-image">
+        <img src="{% static 'images/post_sample.jpg' %}" alt="Post Image" />
+      </div>
+
+      <div class="actions-n-time">
+        <div class="actions">
+          <div class="likes">
+            <i class="far fa-heart"></i>
+            <p class="like-count"><strong>10</strong></p>
+          </div>
+
+          <div class="comments">
+            <i class="far fa-comments"></i>
+            <p class="comment-count"><strong>10</strong></p>
+          </div>
+        </div>
+
+        <div class="time">
+          <p>Posted <strong>1 hour </strong> ago</p>
+        </div>
+      </div>
+
+      <div class="caption">
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
+      </div>
+
+      <div class="comments-btn">
+          <h6>View Comments</h6>
+      </div>
+    
+      <hr>
+
+      <form>
+        <input class="form-control mr-sm-2" type="text" placeholder="Add a comment">
+        <button class="add-comment-btn" type="submit">POST</button>
+      </form>
+
+    </div>
+
+    <div class="col-md-8">
+      <div class="user-credentials">
+        <img src="{% static 'images/person.jpeg' %}" alt="Profile Image" />
+        <p><strong>username</strong></p>
+      </div>
+
+      <div class="post-image">
+        <img src="{% static 'images/post_sample.jpg' %}" alt="Post Image" />
+      </div>
+
+      <div class="actions-n-time">
+        <div class="actions">
+          <div class="likes">
+            <i class="far fa-heart"></i>
+            <p class="like-count"><strong>10</strong></p>
+          </div>
+
+          <div class="comments">
+            <i class="far fa-comments"></i>
+            <p class="comment-count"><strong>10</strong></p>
+          </div>
+        </div>
+
+        <div class="time">
+          <p>Posted <strong>1 hour </strong> ago</p>
+        </div>
+      </div>
+
+      <div class="caption">
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</p>
+      </div>
+
+      <div class="comments-btn">
+          <h6>View Comments</h6>
+      </div>
+    
+      <hr>
+
+      <form>
+        <input class="form-control mr-sm-2" type="text" placeholder="Add a comment">
+        <button class="add-comment-btn" type="submit">POST</button>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

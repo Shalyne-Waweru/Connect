@@ -19,3 +19,9 @@ def signup(request):
   View function that renders the signup page and its data
   '''
   return render(request, 'registration/signup.html')
+
+def timeline(request):
+  '''
+  View function that renders the timeline page and its data
+  '''
+  return render(request, 'timeline.html')

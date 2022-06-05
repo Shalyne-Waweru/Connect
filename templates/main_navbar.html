@@ -1,0 +1,16 @@
+{% load static %}
+
+<nav class="navbar justify-content-between">
+  <a href="{% url 'landingPage' %}"><img src="{% static 'images/logo.png' %}" alt="Logo" /></a>
+
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search users..." aria-label="Search">
+    <button type="submit"><i class="fab fa-searchengin"></i></button>
+  </form>
+
+  <div class="auth-actions">
+    <i class="fas fa-plus-circle"></i>
+    <i class="fas fa-user-circle"></i>
+    <button type="button" class="logout-btn"><a href="#">LOGOUT</a></button>
+  </div>
+</nav>
