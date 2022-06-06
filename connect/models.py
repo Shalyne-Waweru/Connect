@@ -9,6 +9,12 @@ class Profile(models.Model):
     def __str__(self):
         return f'{self.user.username} Profile Details'
 
+    def save_profile(self):
+      self.save()
+
+    def delete_profile(self):
+      self.delete()
+
 
 class Post(models.Model):
   image = models.ImageField(upload_to = 'post-images/',default='DEFAULT VALUE')
@@ -20,3 +26,9 @@ class Post(models.Model):
 
   def __str__(self):
         return self.caption
+
+  def save_post(self):
+    self.save()
+
+  def delete_post (self):
+    self.delete()
