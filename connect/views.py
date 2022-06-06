@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
 from .forms import LoginForm
+from .email import send_welcome_email
 
 # Create your views here.
 
@@ -64,6 +65,9 @@ def signup(request):
               new_user = User.objects.create(username=username, email=email, password=password)
               new_user.is_staff = True
               new_user.save()
+
+              # Sending The Welcome Email Message
+              send_welcome_email(username,email)
 
               if new_user is not None:
                 messages.success(request,"User Registered Successfully!")
