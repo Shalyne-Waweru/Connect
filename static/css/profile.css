@@ -69,7 +69,7 @@
 }
 
 .upload-pic {
-  margin-left: 70px;
+  margin-left: 130px;
   border: none;
   border-radius: 5px;
   padding: 8px;
@@ -77,7 +77,7 @@
   background-color: #FA00B4;
   font-weight: bold;
   margin-bottom: 10px;
-  width: 100px;
+  width: 200px;
   cursor: pointer;
 }
 

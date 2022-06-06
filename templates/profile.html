@@ -8,10 +8,11 @@
   <div class="container">
 
     <img src="{% static 'images/person.jpeg' %}" alt="Profile Image" class="img-thumbnail">
+    <!-- <img src="{{user.profile.profile_pic.url}}" alt="Profile Image" class="img-thumbnail"> -->
 
     <div class="profile-info">
       <div class="profile-details">
-        <p><strong>Username</strong></p>
+        <p><strong>{{user.username}}</strong></p>
         <p>My Bio</p>
       </div>
 
@@ -144,22 +145,63 @@
         </div>
       </div>
 
-      <button id="change-profile-btn" class="submit-btn" type="button">CHANGE PROFILE PHOTO</button>
+      <button id="change-profile-btn" class="submit-btn" type="button" data-toggle="modal"
+        data-target="#updateProfileModal">CHANGE PROFILE PHOTO</button>
 
       <!-- Change Profile Section -->
-      <div class="pic-upload">
+      <div class="modal" id="updateProfileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="exampleModalLabel">UPDATE PROFILE</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
 
-        <form action="" method="post" enctype="multipart/form-data">
+            <div class="modal-body">
+              <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
 
-          <div class="form-group">
-            <label for="exampleFormControlFile1">Upload Profile Image</label>
-            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                <div class="form-group">
+                  <label>Username</label><br>
+                  <input type="text" class="form-control" name = "username" value = "{{user.username}}">
+                </div>
+            
+                <div class="form-group">
+                  <label>Email</label><br>
+                  <input type="email" class="form-control" name = "email" value = "{{user.email}}">
+                </div>
+
+                <div class="form-group">
+                  <label>Bio</label><br>
+                  <textarea class="form-control" name = "bio"></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleFormControlFile1">Upload Profile Image</label>
+                  <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                </div>
+
+                <button class="upload-pic" type="submit">UPDATE PROFILE</button>
+              </form>
+
+              <!-- <form action="" method="POST" novalidate enctype="multipart/form-data">
+                  {% csrf_token%}
+                  {{ user_info_form.as_p}}
+                  {{ update_profile_form.as_p}}
+                  <button type="submit" class="btn btn-primary btn-sm"> UPDATE PROFILE</button>
+                </form> -->
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
           </div>
-
-          <button class="upload-pic" type="submit">SUBMIT</button>
-        </form>
-
+        </div>
       </div>
+
     </div>
 
   </div>
