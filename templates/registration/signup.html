@@ -2,37 +2,48 @@
 {% load static %}
 
 {% block content %}
+
+{% if messages %}
+  {% for message in messages %}
+  <div class="alert alert-dark alert-dismissible text-center fade show m-0" role="alert">
+    {{message}}
+    <span class="close" data-dismiss="modal">&times;</span>
+  </div>
+  {% endfor %}
+{% endif %}
+
 <div class="container">
   <div class="auth-img">
     <img src="{% static 'images/auth_img.png' %}" alt="Logo" />
     <h4>Join the Fastest Growing <br> Network Today</h4>
   </div>
 
-  <form>
+  <form action="" method="POST">
+    {% csrf_token %}
     <img src="{% static 'images/logo.png' %}" alt="Logo" />
 
     <div class="form-group">
-      <label for="exampleUsername1">Username</label>
-      <input type="text" class="form-control" id="exampleUsername1">
+      <label>Username</label><br>
+      <input type="text" class="form-control" name = "username">
     </div>
 
     <div class="form-group">
-      <label for="exampleInputEmail1">Email</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <label>Email</label><br>
+      <input type="email" class="form-control" name = "email">
       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
 
     <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1">
+      <label>Password</label><br>
+      <input type="password" class="form-control" name = "password">
     </div>
 
     <div class="form-group">
-      <label for="exampleInputConfirmPassword1">Confirm Password</label>
-      <input type="password" class="form-control" id="exampleInputConfirmPassword1">
+      <label>Confirm Password</label><br>
+      <input type="password" class="form-control" name = "passwordConfirm">
     </div>
 
-    <button type="submit" class="auth-login-btn"><a href="#">SIGN UP</a></button>
+    <button type="submit" class="auth-login-btn">SIGN UP</button>
 
     <p>Already have an account? <span class="redirect-txt"><a href="{% url 'loginPage' %}">LOGIN</a></span></p>
   </form>

@@ -4,4 +4,9 @@ $(document).ready(function(){
   $('#change-profile-btn').click(function(){
     $('.pic-upload').toggle();
   })
+
+  $('.close').click(function(){
+    $('.alert').css("display", "none");
+  })
+
 });

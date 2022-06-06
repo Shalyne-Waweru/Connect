@@ -2,6 +2,16 @@
 {% load static %}
 
 {% block content %}
+
+{% if messages %}
+  {% for message in messages %}
+  <div class="alert alert-dark alert-dismissible text-center fade show m-0" role="alert">
+    {{message}}
+    <span class="close" data-dismiss="modal">&times;</span>
+  </div>
+  {% endfor %}
+{% endif %}
+
 <div class="container">
   <div class="auth-img">
     <img src="{% static 'images/auth_img.png' %}" alt="Logo" />

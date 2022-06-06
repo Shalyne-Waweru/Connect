@@ -115,6 +115,20 @@ form img {
   background-color: #E4EDFD;
 }
 
+input {
+  border: 1px solid lightgray;
+  background-color: #E4EDFD;
+  width: 100%;
+  height: 40px;
+  border-radius:5px;
+}
+
+input:focus {
+  outline: none !important;
+  background-color: white;
+  box-shadow: 0 0 0 0.2rem #B7D2FF;
+}
+
 .auth-login-btn {
   border: none;
   border-radius: 5px;
