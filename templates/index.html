@@ -25,8 +25,12 @@
     <img src="{% static 'images/logo.png' %}" alt="Logo" />
 
     <div class="auth-btns">
+      {% if user.is_authenticated %}
+        <button type="button" class="login-btn"><a href="{% url 'logout' %}">LOGOUT</a></button>
+      {% else %}
       <button type="button" class="login-btn"><a href="{% url 'loginPage' %}">LOGIN</a></button>
       <button type="button" class="signup-btn"><a href="{% url 'signupPage' %}">SIGN UP</a></button>
+      {% endif %}
     </div>
   </nav>
 

@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User,auth
 from django.contrib import messages
+from .forms import LoginForm
 
 # Create your views here.
 
@@ -10,11 +11,35 @@ def index(request):
   '''
   return render(request, 'index.html')
 
+def logout(request):
+  '''
+  View function that logs out the user
+  '''
+  auth.logout(request)
+  messages.success(request,"User Logged Out Successfully!")
+  return redirect('loginPage')
+
 def login(request):
-  '''
-  View function that renders the login page and its data
-  '''
-  return render(request, 'registration/login.html')
+    form=LoginForm()
+
+    if request.method=='POST':
+        form=LoginForm(request.POST)
+
+        if form.is_valid():
+            username  = form.cleaned_data.get("username")
+            password = form.cleaned_data.get("password")
+
+            user= auth.authenticate(request,username=username,password=password)
+            print(user)
+
+            if user is not None:
+              auth.login(request, user)
+              return redirect('timelinePage')
+
+            else:
+              messages.error(request,"Wrong credentials, Please Try Again!")
+      
+    return render(request, 'registration/login.html', locals())
 
 def signup(request):
   '''
@@ -37,10 +62,12 @@ def signup(request):
 
             else:
               new_user = User.objects.create(username=username, email=email, password=password)
+              new_user.is_staff = True
               new_user.save()
 
-              messages.success(request,"User Registered Successfully!")
-              return redirect(login)
+              if new_user is not None:
+                messages.success(request,"User Registered Successfully!")
+                return redirect('loginPage')
               
         else:
           messages.error(request,"Passwords Don't Match!")
