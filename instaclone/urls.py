@@ -18,16 +18,16 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 from django.contrib.auth import views as auth_view
-from connect.views import index,login,signup,logout,timeline,profile
+from connect.views import index,login_user,signup,logout_user,timeline,profile
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='landingPage'),
-    path('login/', login, name='loginPage'),
+    path('login/', login_user, name='loginPage'),
     path('signup/', signup, name='signupPage'),
     path('timeline/', timeline, name='timelinePage'),
     path('profile/', profile, name='profilePage'),
-    path('logout/', logout, name='logout'),
+    path('logout/', logout_user, name='logout'),
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

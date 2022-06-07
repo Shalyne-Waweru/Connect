@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect,HttpResponseRedirect
 from django.contrib.auth.models import User,auth
+from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from .forms import LoginForm,PostForm
 from .email import send_welcome_email
@@ -13,35 +14,30 @@ def index(request):
   '''
   return render(request, 'index.html')
 
-def logout(request):
+def logout_user(request):
   '''
   View function that logs out the user
   '''
-  auth.logout(request)
+  logout(request)
   messages.success(request,"User Logged Out Successfully!")
   return redirect('loginPage')
 
-def login(request):
-    form=LoginForm()
+def login_user(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
 
-    if request.method=='POST':
-        form=LoginForm(request.POST)
+        user= authenticate(request,username=username,password=password)
+        print (user)
 
-        if form.is_valid():
-            username  = form.cleaned_data.get("username")
-            password = form.cleaned_data.get("password")
+        if user is not None:
+            login(request,user)
+            return redirect('timelinePage')
 
-            user= auth.authenticate(request,username=username,password=password)
-            print(user)
-
-            if user is not None:
-              auth.login(request, user)
-              return redirect('timelinePage')
-
-            else:
-              messages.error(request,"Wrong credentials, Please Try Again!")
-      
-    return render(request, 'registration/login.html', locals())
+        else:
+            messages.error(request,"Wrong credentials, Please Try Again!")
+    
+    return render (request,'registration/login.html', {})
 
 def signup(request):
   '''
@@ -64,7 +60,6 @@ def signup(request):
 
             else:
               new_user = User.objects.create(username=username, email=email, password=password)
-              new_user.is_staff = True
               new_user.save()
 
               # Sending The Welcome Email Message
