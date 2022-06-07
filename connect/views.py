@@ -2,9 +2,9 @@ from django.shortcuts import render,redirect,HttpResponseRedirect
 from django.contrib.auth.models import User,auth
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
-from .forms import LoginForm,PostForm
+from .forms import LoginForm,PostForm,UpdateUserInfoForm,UpdateProfileForm
 from .email import send_welcome_email
-from .models import Post
+from .models import Post, Profile
 
 # Create your views here.
 
@@ -107,4 +107,22 @@ def profile(request):
   '''
   View function that renders the profile page and its data
   '''
-  return render(request, 'profile.html')
+
+  # user_info_form = UpdateUserInfoForm()
+  update_profile_form = UpdateProfileForm()
+
+  if request.method == 'POST':
+    user_info_form = UpdateUserInfoForm(request.POST,instance=request.user)
+    update_profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user.profile)
+
+    if user_info_form.is_valid and update_profile_form.is_valid():
+            
+            user_info_form.save()
+            update_profile_form.save()
+
+            return HttpResponseRedirect(request.path_info)
+  else:
+        user_info_form = UpdateUserInfoForm(instance=request.user)
+        update_profile_form = UpdateProfileForm(instance=request.user.profile)
+
+  return render(request, 'profile.html', locals())
