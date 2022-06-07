@@ -29,16 +29,20 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+
+        <!-- UPLOAD IMAGE FORM SECTION-->
         <div class="modal-body">
-          <form method="post" enctype="multipart/form-data"> 
+          <form method="POST" enctype="multipart/form-data"> 
+            {% csrf_token %}
+
             <div class="form-group">
-              <label for="exampleFormControlFile1">Upload Image</label>
-              <input type="file" class="form-control-file" id="exampleFormControlFile1">
+              <label>Upload Image</label>
+              <input type="file" class="form-control-file" name="image">
             </div>
 
             <div class="form-group">
-              <label for="exampleCaption1">Image Caption</label>
-              <textarea type="text" class="form-control" id="exampleCaption1"></textarea>
+              <label>Image Caption</label>
+              <textarea type="text" class="form-control" name="caption"></textarea>
             </div>
 
             <button type="submit" class="upload-btn">UPLOAD</button>

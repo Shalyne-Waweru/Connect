@@ -1,8 +1,9 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,HttpResponseRedirect
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
-from .forms import LoginForm
+from .forms import LoginForm,PostForm
 from .email import send_welcome_email
+from .models import Post
 
 # Create your views here.
 
@@ -83,7 +84,29 @@ def timeline(request):
   '''
   View function that renders the timeline page and its data
   '''
-  return render(request, 'timeline.html')
+
+  posts = Post.all_posts()
+
+  form=PostForm()
+
+  if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            image = request.FILES['image']
+            caption = request.POST['caption']
+
+            new_post = Post.objects.create(image=image, caption=caption, user=request.user)
+            new_post.save()
+
+            print(image)
+            print(caption)
+
+            return HttpResponseRedirect(request.path_info)
+  else:
+      form = PostForm()
+
+  return render(request, 'timeline.html', {"posts": posts})
 
 def profile(request):
   '''
