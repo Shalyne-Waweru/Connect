@@ -23,24 +23,25 @@
     <img src="{% static 'images/logo.png' %}" alt="Logo" />
 
     <div class="form-group">
-      <label>Username</label><br>
-      <input type="text" class="form-control" name = "username" required>
+      <label>{{signupForm.username.label}}</label><br>
+      {{signupForm.username}}
     </div>
 
     <div class="form-group">
-      <label>Email</label><br>
-      <input type="email" class="form-control" name = "email" required>
+      <label>{{signupForm.email.label}}</label><br>
+      {{signupForm.email}}
       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
 
     <div class="form-group">
-      <label>Password</label><br>
-      <input type="password" class="form-control" name = "password" required>
+      <label>{{signupForm.password1.label}}</label><br>   
+      {{signupForm.password1}}
+      <small id="passwordHelp" class="form-text text-muted">The password should <strong>NOT</strong> be common, only numeric or less than 8 characters</small>
     </div>
 
     <div class="form-group">
       <label>Confirm Password</label><br>
-      <input type="password" class="form-control" name = "passwordConfirm" required>
+      {{signupForm.password2}}
     </div>
 
     <button type="submit" class="auth-login-btn">SIGN UP</button>

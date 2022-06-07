@@ -2,9 +2,10 @@ from django.shortcuts import render,redirect,HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
-from .forms import LoginForm,PostForm,UpdateUserInfoForm,UpdateProfileForm
+from .forms import SignUpForm,PostForm,UpdateUserInfoForm,UpdateProfileForm
 from .email import send_welcome_email
 from .models import Post, Profile
+# from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
 
@@ -25,9 +26,7 @@ def logout_user(request):
 def login_user(request):
     if request.method == 'POST':
         username = request.POST['username']
-        print (username)
         password = request.POST['password']
-        print(password)
 
         user= authenticate(request,username=username,password=password)
         print (user)
@@ -46,34 +45,30 @@ def signup(request):
   View function that renders the signup page and its data
   '''
 
+  signupForm = SignUpForm()
+
   if request.method == 'POST':
-        username = request.POST['username']
-        email = request.POST['email']
-        password = request.POST['password']
-        passwordConfirm = request.POST['passwordConfirm']
+    signupForm = SignUpForm(request.POST)
 
-        if password == passwordConfirm:
+    if signupForm.is_valid():
+      username = signupForm.cleaned_data['username']
+      email = signupForm.cleaned_data['email']
 
-            if User.objects.filter(username=username).exists():
-              messages.error(request,"Username Already Taken!")
+      signupForm.save()
 
-            if User.objects.filter(email=email).exists():
-              messages.error(request,"Email Already Taken!")
+      # Sending the welcome email
+      send_welcome_email(username,email)
 
-            else:
-              new_user = User.objects.create(username=username, email=email, password=password)
-              new_user.save()
+      messages.success(request, "User Registered Successfully!")
+      return redirect("loginPage")
 
-              # Sending The Welcome Email Message
-              send_welcome_email(username,email)
+    else:
+      messages.error(request, "Password Doesn't Meet the Requirements, Please Try Again!")
+      return redirect("signupPage")
+    
+  else:
+    signupForm = SignUpForm()
 
-              if new_user is not None:
-                messages.success(request,"User Registered Successfully!")
-                return redirect('loginPage')
-              
-        else:
-          messages.error(request,"Passwords Don't Match!")
-  
   return render(request, 'registration/signup.html', locals())
 
 
@@ -129,4 +124,4 @@ def profile(request, profile_id):
         user_info_form = UpdateUserInfoForm(instance=request.user)
         update_profile_form = UpdateProfileForm(instance=request.user.profile)
 
-  return render(request, 'profile.html', {"myPosts": myPosts})
+  return render(request, 'profile.html', locals())

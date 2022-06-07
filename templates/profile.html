@@ -146,7 +146,7 @@
       </div>
 
       <button id="change-profile-btn" class="submit-btn" type="button" data-toggle="modal"
-        data-target="#updateProfileModal">CHANGE PROFILE PHOTO</button>
+        data-target="#updateProfileModal">EDIT PROFILE</button>
 
       <!-- Change Profile Section -->
       <div class="modal" id="updateProfileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -166,14 +166,12 @@
 
                 <div class="form-group">
                   <label>Username</label><br>
-                  <div class="form-control">{{user_info_form.username}}</div>
-                  <!-- <input type="text" class="form-control" name = "username" value = "{{user.username}}"> -->
+                  <input type="text" class="form-control" name = "username" value = "{{user.username}}">
                 </div>
             
                 <div class="form-group">
                   <label>Email</label><br>
                   <div class="form-control">{{user_info_form.email}}</div>
-                  <!-- <input type="email" class="form-control" name = "email" value = "{{user.email}}"> -->
                 </div>
 
                 <div class="form-group">
