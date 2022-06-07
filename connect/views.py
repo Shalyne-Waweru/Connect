@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect,HttpResponseRedirect
-from django.contrib.auth.models import User,auth
+from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from .forms import LoginForm,PostForm,UpdateUserInfoForm,UpdateProfileForm
@@ -25,7 +25,9 @@ def logout_user(request):
 def login_user(request):
     if request.method == 'POST':
         username = request.POST['username']
+        print (username)
         password = request.POST['password']
+        print(password)
 
         user= authenticate(request,username=username,password=password)
         print (user)
@@ -103,12 +105,14 @@ def timeline(request):
 
   return render(request, 'timeline.html', {"posts": posts})
 
-def profile(request):
+def profile(request, profile_id):
   '''
   View function that renders the profile page and its data
   '''
 
-  # user_info_form = UpdateUserInfoForm()
+  myPosts = request.user.posts.all()
+
+  user_info_form = UpdateUserInfoForm()
   update_profile_form = UpdateProfileForm()
 
   if request.method == 'POST':
@@ -125,4 +129,4 @@ def profile(request):
         user_info_form = UpdateUserInfoForm(instance=request.user)
         update_profile_form = UpdateProfileForm(instance=request.user.profile)
 
-  return render(request, 'profile.html', locals())
+  return render(request, 'profile.html', {"myPosts": myPosts})

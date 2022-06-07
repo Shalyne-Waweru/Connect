@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,re_path
 from django.contrib.auth import views as auth_view
 from connect.views import index,login_user,signup,logout_user,timeline,profile
 
@@ -26,7 +26,7 @@ urlpatterns = [
     path('login/', login_user, name='loginPage'),
     path('signup/', signup, name='signupPage'),
     path('timeline/', timeline, name='timelinePage'),
-    path('profile/', profile, name='profilePage'),
+    re_path(r'^profile/(\d+)', profile, name='profilePage'),
     path('logout/', logout_user, name='logout'),
 ]
 if settings.DEBUG:
