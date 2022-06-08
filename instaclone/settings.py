@@ -44,7 +44,7 @@ SECRET_KEY = 'django-insecure-78(d9a2-mwgwz&xc%b+gx)x=aje7c!h^hg@(&p-lk5z*c6bkyz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['instaclone-connect.herokuapp.com']
 
 
 # Application definition
