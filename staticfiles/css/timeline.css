@@ -1,0 +1,389 @@
+@import url('https://fonts.googleapis.com/css2?family=Charm&display=swap');
+
+/* Navbar Section */
+.navbar {
+  padding-left: 80px;
+  padding-right: 80px;
+  align-items: center;
+  background-color: #A9C9FF;
+  background-image: linear-gradient(180deg, #A9C9FF 0%, #FFBBEC 80%);
+}
+
+.navbar img {
+  width: 150px;
+}
+
+.form-inline button{
+  border: none;
+  background-color: transparent;
+}
+
+.form-inline button .fab {
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.auth-actions {
+  padding-top: 20px;
+}
+
+.auth-actions a, .auth-actions a:visited {
+  color: black;
+}
+
+.auth-actions .fas {
+  font-size: 25px;
+  margin-right: 30px;
+  cursor: pointer;
+}
+
+.logout-btn {
+  border: none;
+  border-radius: 5px;
+  padding: 8px;
+  color: white;
+  background-color: #2072FE;
+  font-family: 'Charm', 'sans-serif';
+  font-weight: bold;
+  width: 80px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.logout-btn a, .logout-btn a:visited {
+  color: white;
+  text-decoration: none;
+}
+
+.loout-btn:hover{
+  background-color: black;
+  color: white;
+}
+
+/* Navbar Add Post Modal */
+.navbar .modal-content {
+  border-radius: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.navbar .modal-title {
+  font-family: 'Charm', 'sans-serif';
+  font-weight: bold;
+}
+
+.form-control-file {
+  border: 1px solid rgb(190, 189, 189);
+  height: 40px;
+  margin-bottom: 30px;
+  border-radius: 5px;
+}
+
+.upload-btn {
+  border: none;
+  border-radius: 5px;
+  padding: 8px;
+  color: white;
+  background-color: #2072FE;
+  font-family: 'Charm', 'sans-serif';
+  font-weight: bold;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+/* Post Section */
+.container {
+  margin-top: 50px;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.col-md-8 {
+  border: 1px solid black;
+  margin-bottom: 40px;
+  border-radius:5px;
+  padding: 0px;
+}
+
+/* Profile Pic & Username Section */
+.col-md-8 .user-credentials {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.col-md-8 .user-credentials img {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.col-md-8 .user-credentials p {
+  margin-top: 8px;
+}
+
+/* Post Image Section */
+.post-image img {
+  width: 100%;
+  height: 350px;
+  padding: 0px;
+  margin: 0px;
+  cursor: zoom-in;
+}
+
+/* Post Actions Section */
+.actions-n-time {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-top: 20px;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.likes {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 30px;
+}
+
+.likes .far {
+  font-size: 25px;
+  color: #FA00B4;
+  cursor: pointer;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comments .far {
+  font-size: 25px;
+}
+
+/* Caption Section */
+.caption {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+/* View Comments Section */
+.comments-btn h6 {
+  font-weight: bold;
+  padding-left: 30px;
+  padding-right: 30px;
+  cursor: pointer;
+}
+
+.comments-btn h6:hover {
+  text-decoration: underline;
+}
+
+/* Comment Form Section */
+.col-md-8 form {
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.col-md-8 form input {
+  width: 80%;
+  border: 1px solid gray;
+}
+
+.add-comment-btn {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 8px;
+  background-color: black;
+  font-family: 'Charm', 'sans-serif';
+  font-weight: bold;
+  cursor: pointer;
+  width: 100px;
+}
+
+/* COMMENTS MODAL SECTION */
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: #A9C9FF;
+  background-image: linear-gradient(180deg, #A9C9FF 0%, #FFBBEC 80%);
+}
+
+.modal #container {
+  width: 80%;
+  height: 85%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.modal #row {
+  display: flex;
+}
+
+.modal .col-md-6 {
+  padding: 0px;
+  margin: 0px;
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: 0px;
+  padding: 0px;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 0px;
+}
+
+/* Comment Section */
+.right {
+  background-color: white;
+  height: 670px;
+}
+
+/* Profile Pic & Username Section */
+.modal-user-credentials {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.modal-user-credentials img {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.modal-user-credentials p {
+  margin-top: 8px;
+}
+
+.modal-caption {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.all-comments {
+  height: 400px;
+  overflow: scroll;
+}
+
+.comments-section {
+  padding-left: 30px;
+  padding-right: 30px;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.comments-section img {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin-right: 8px;
+}
+
+.comments-info {
+  width: 600px;
+}
+
+.comments-info .comment {
+  margin-top: -15px;
+}
+
+.username-n-date {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.all-comments #default-comment-txt {
+  font-weight: bold;
+  margin-left: 150px;
+}
+
+/* Add Animation */
+.modal-content, #model-img-info {  
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: black;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
