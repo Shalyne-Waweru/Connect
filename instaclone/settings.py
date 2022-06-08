@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from decouple import config
 from pathlib import Path
 import os
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Email configurations
 EMAIL_USE_TLS = config('EMAIL_USE_TLS')
@@ -41,6 +44,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'connect',
+    'cloudinary',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -142,3 +146,9 @@ MEDIAFILES_DIRS = (
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+cloudinary.config(
+    cloud_name = "dwwdaas0u",
+    api_key = "672713312823436",
+    api_secret = "m9A_IUiok9WSzZ0cRcyuPpfCXsU"
+)
