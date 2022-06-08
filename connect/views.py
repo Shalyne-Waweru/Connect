@@ -1,10 +1,10 @@
-from django.shortcuts import render,redirect,HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render,redirect,HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
-from .forms import SignUpForm,PostForm,UpdateUserInfoForm,UpdateProfileForm
+from .forms import SignUpForm,PostForm,UpdateUserInfoForm,UpdateProfileForm,CommentForm
 from .email import send_welcome_email
-from .models import Post, Profile
+from .models import Post, Profile, Comment
 # from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
@@ -98,7 +98,11 @@ def timeline(request):
   else:
       form = PostForm()
 
-  return render(request, 'timeline.html', {"posts": posts})
+  #Get all the comments
+  comments = Comment.objects.all()
+  print(comments)
+
+  return render(request, 'timeline.html', {"posts": posts, "comments":comments})
 
 def profile(request, profile_id):
   '''
@@ -125,3 +129,34 @@ def profile(request, profile_id):
         update_profile_form = UpdateProfileForm(instance=request.user.profile)
 
   return render(request, 'profile.html', locals())
+
+
+def comment(request, post_id):
+  '''
+  View function that handles the post comments
+  '''
+  # Get the post id
+  post = get_object_or_404(Post, pk=post_id)
+
+  form=CommentForm()
+
+  if request.method == 'POST':
+        form = CommentForm(request.POST)
+
+        if form.is_valid():
+            comment = request.POST["comment"]
+            print(comment)
+
+            new_comment = Comment.objects.create(comment=comment, user=request.user, post=post)
+            new_comment.save()
+
+            messages.success(request, "Comment Added Successfully!")
+            return redirect('timelinePage')
+
+        else:
+            messages.error(request, "An error occured, Please Try Again!")
+            return redirect('timelinePage')
+  else:
+      form = CommentForm()
+
+  return render(request, 'timeline.html', locals())

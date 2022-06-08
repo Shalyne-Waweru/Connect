@@ -3,155 +3,140 @@
 
 {% block content %}
 
+{% if messages %}
+{% for message in messages %}
+
+{% if message %}
+<div class="alert alert-dark alert-dismissible text-center fade show m-0" role="alert">
+  {{message}}
+  <span class="close" data-dismiss="modal">&times;</span>
+</div>
+{% endif %}
+
+{% endfor %}
+{% endif %}
+
 <div class="container">
   <div class="row">
     {% if posts %}
 
-      {% for post in posts %}
-      <div class="col-md-8">
-        <div class="user-credentials">
-          <img src="{% static 'images/person.jpeg' %}" alt="Profile Image" />
-          <p><strong>{{post.user.username}}</strong></p>
-        </div>
+    {% for post in posts %}
+    <div class="col-md-8">
+      <div class="user-credentials">
+        <img src="{{post.user.profile.profile_pic.url}}" alt="Profile Image" />
+        <p><strong>{{post.user.username}}</strong></p>
+      </div>
 
-        <div class="post-image">
-          <img src="{{post.image.url}}" alt="Post Image" />
-        </div>
+      <div class="post-image">
+        <img src="{{post.image.url}}" alt="Post Image" data-toggle="modal" data-target="#{{post.id}}"/>
+      </div>
 
-        <div class="actions-n-time">
-          <div class="actions">
-            <div class="likes">
-              <i class="far fa-heart"></i>
-              <p class="like-count"><strong>10</strong></p>
-            </div>
-
-            <div class="comments">
-              <i class="far fa-comments"></i>
-              <p class="comment-count"><strong>10</strong></p>
-            </div>
+      <div class="actions-n-time">
+        <div class="actions">
+          <div class="likes">
+            <i class="far fa-heart"></i>
+            <p class="like-count"><strong>10</strong></p>
           </div>
 
-          <div class="time">
-            <p>Posted <strong>{{post.date | timesince}} </strong> ago</p>
+          <div class="comments">
+            <i class="far fa-comments"></i>
+            <!-- The second 'post' is the related_name for the Comments foreign key -->
+            <p class="comment-count"><strong>{{post.post.count}}</strong></p>
           </div>
         </div>
 
-        <div class="caption">
-          <p>{{post.caption}}</p>
+        <div class="time">
+          <p>Posted <strong>{{post.date | timesince}} </strong> ago</p>
         </div>
+      </div>
 
-        <div class="comments-btn" data-toggle="modal" data-target="#exampleModal">
-          <h6 id="viewComments">View Comments</h6>
-        </div>
+      <div class="caption">
+        <p>{{post.caption}}</p>
+      </div>
 
-        <!-- The Comments Modal -->
-        <div class="main-modal">
-          <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-            aria-hidden="true">
-            <span class="close" data-dismiss="modal">&times;</span>
+      <div class="comments-btn" data-toggle="modal" data-target="#{{post.id}}">
+        <h6 id="viewComments">View Comments</h6>
+      </div>
 
-            <div id="container">
-              <div id="row">
-                <div class="col-md-6">
-                  <img class="modal-content" src="{% static 'images/post_sample.jpg' %}" alt="Post Image">
+      <!-- The Comments Modal -->
+      <div class="main-modal">
+        <div class="modal" id="{{post.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+          aria-hidden="true">
+          <span class="close" data-dismiss="modal">&times;</span>
+
+          <div id="container">
+            <div id="row">
+              <div class="col-md-6">
+                <img class="modal-content" src="{{post.image.url}}" alt="Post Image">
+              </div>
+
+              <div class="col-md-6 right">
+                <div class="modal-user-credentials">
+                  <img src="{{post.user.profile.profile_pic.url}}" alt="Profile Image" />
+                  <p><strong>{{post.user.username}}</strong></p>
                 </div>
 
-                <div class="col-md-6 right">
-                  <div class="modal-user-credentials">
-                    <img src="{% static 'images/person.jpeg' %}" alt="Profile Image" />
-                    <p><strong>username</strong></p>
+                <div class="modal-caption">
+                  <p>{{post.caption}}</p>
+                </div>
+
+                <hr>
+
+                <div class="all-comments">
+
+                  {% for com in comments %}
+
+                  {% if post.id == com.post.id %}
+                  <div class="comments-section">
+                    <img src="{{com.user.profile.profile_pic.url}}" alt="Profile Image" />
+
+                    <div class="comments-info">
+                      <div class="username-n-date">
+                        <p><strong>{{com.user.username}}</strong></p>
+                        <p class="date"><strong>{{com.date | date}}</strong></p>
+                      </div>
+
+                      <p class="comment">{{com.comment}}</p>
+                    </div>
                   </div>
+                  {% endif %}
 
-                  <div class="modal-caption">
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean
-                      massa.</p>
-                  </div>
+                  {% endfor %}
 
-                  <hr>
+                </div>
 
-                  <div class="all-comments">
-                    <div class="comments-section">
-                      <img src="{% static 'images/person.jpeg' %}" alt="Profile Image" />
-
-                      <div class="comments-info">
-                        <div class="username-n-date">
-                          <p><strong>username</strong></p>
-                          <p class="date"><strong>08/04/2022</strong></p>
-                        </div>
-
-                        <p class="comment">Lorem ipsum dolor sit amet, consectetuer adip elit. </p>
-                      </div>
-
-                    </div>
-
-                    <div class="comments-section">
-                      <img src="{% static 'images/person.jpeg' %}" alt="Profile Image" />
-
-                      <div class="comments-info">
-                        <div class="username-n-date">
-                          <p><strong>username</strong></p>
-                          <p class="date"><strong>08/04/2022</strong></p>
-                        </div>
-
-                        <p class="comment">Lorem ipsum dolor sit amet, consectetuer adip elit. </p>
-                      </div>
-
-                    </div>
-
-                    <div class="comments-section">
-                      <img src="{% static 'images/person.jpeg' %}" alt="Profile Image" />
-
-                      <div class="comments-info">
-                        <div class="username-n-date">
-                          <p><strong>username</strong></p>
-                          <p class="date"><strong>08/04/2022</strong></p>
-                        </div>
-
-                        <p class="comment">Lorem ipsum dolor sit amet, consectetuer adip elit. </p>
-                      </div>
-
-                    </div>
-
-                    <div class="comments-section">
-                      <img src="{% static 'images/person.jpeg' %}" alt="Profile Image" />
-
-                      <div class="comments-info">
-                        <div class="username-n-date">
-                          <p><strong>username</strong></p>
-                          <p class="date"><strong>08/04/2022</strong></p>
-                        </div>
-
-                        <p class="comment">Lorem ipsum dolor sit amet, consectetuer adip elit. </p>
-                      </div>
-
-                    </div>
-
-                  </div>
-
-                  <form>
-                    <input class="form-control mr-sm-2" type="text" placeholder="Add a comment">
+                {% if user.is_authenticated and user.id != post.user.id %}
+                  <!-- Modal Comment Form -->
+                  <form action="{% url 'commentPage' post_id=post.id%}" method="POST">
+                    {% csrf_token %}
+                    <input class="form-control mr-sm-2" type="text" placeholder="Add a comment" name="comment">
                     <button class="add-comment-btn" type="submit">POST</button>
                   </form>
+                {% endif %}
 
-                </div>
               </div>
             </div>
-
           </div>
+
         </div>
-
-        <hr>
-
-        <form>
-          <input class="form-control mr-sm-2" type="text" placeholder="Add a comment">
-          <button class="add-comment-btn" type="submit">POST</button>
-        </form>
-
       </div>
-      {% endfor %}
+
+      <hr>
+
+      {% if user.is_authenticated and user.id != post.user.id %}
+      <!-- Post Comment Form -->
+      <form action="{% url 'commentPage' post_id=post.id%}" method="POST">
+        {% csrf_token %}
+        <input class="form-control mr-sm-2" type="text" placeholder="Add a comment" name="comment">
+        <button class="add-comment-btn" type="submit">POST</button>
+      </form>
+      {% endif %}
+
+    </div>
+    {% endfor %}
 
     {% else %}
-      <h4>There Are No Posts Yet</h4>
+    <h4>There Are No Posts Yet</h4>
     {% endif %}
   </div>
 </div>

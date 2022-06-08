@@ -1,4 +1,3 @@
-import re
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
@@ -54,4 +53,17 @@ class Post(models.Model):
   @classmethod
   def all_posts(cls):
     return cls.objects.all()
+
+
+class Comment(models.Model):
+  comment = models.CharField(max_length=250)
+  date = models.DateTimeField(auto_now_add=True)
+  #Create a foreign key column that will store the ID of the User from the User table
+  user = models.ForeignKey(User,on_delete=models.CASCADE,related_name='user')
+  #Create a foreign key column that will store the ID of the Post from the Post table
+  post = models.ForeignKey(Post,on_delete=models.CASCADE,related_name='post')
+
+  class Meta:
+        ordering = ["-pk"]
+  
 

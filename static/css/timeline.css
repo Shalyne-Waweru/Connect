@@ -141,6 +141,7 @@
   height: 350px;
   padding: 0px;
   margin: 0px;
+  cursor: zoom-in;
 }
 
 /* Post Actions Section */
@@ -337,6 +338,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.all-comments #default-comment-txt {
+  font-weight: bold;
+  margin-left: 150px;
 }
 
 /* Add Animation */
