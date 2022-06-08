@@ -160,3 +160,17 @@ def comment(request, post_id):
       form = CommentForm()
 
   return render(request, 'timeline.html', locals())
+
+
+def search_results(request):
+
+    if 'username' in request.GET and request.GET["username"]:
+        search_term = request.GET.get("username")
+        searched_profile = Profile.search_profile(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'search.html',{"message":message,"searched_profile": searched_profile})
+
+    else:
+        message = "You haven't searched for any user"
+        return render(request, 'search.html',{"message":message})

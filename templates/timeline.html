@@ -23,7 +23,7 @@
     {% for post in posts %}
     <div class="col-md-8">
       <div class="user-credentials">
-        <img src="{{post.user.profile.profile_pic.url}}" alt="Profile Image" />
+        <a href = "/profile/{{post.user.profile.id}}"><img src="{{post.user.profile.profile_pic.url}}" alt="Profile Image" /></a>
         <p><strong>{{post.user.username}}</strong></p>
       </div>
 

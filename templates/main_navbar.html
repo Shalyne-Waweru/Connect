@@ -3,8 +3,8 @@
 <nav class="navbar justify-content-between">
   <a href="{% url 'landingPage' %}"><img src="{% static 'images/logo.png' %}" alt="Logo" /></a>
 
-  <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search users..." aria-label="Search">
+  <form class="form-inline" action="{% url 'search_results' %}">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search users..." aria-label="Search" id="username" name="username" required>
     <button type="submit"><i class="fab fa-searchengin"></i></button>
   </form>
 

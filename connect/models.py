@@ -29,6 +29,12 @@ class Profile(models.Model):
             Profile.objects.create(user=instance)
         instance.profile.save()
 
+    @classmethod
+    def search_profile(cls,search_term):
+      #The __icontains query filter will check if any word in the username field of our profile matches the search_term
+      profile = cls.objects.filter(user__username__icontains=search_term)
+      return profile
+
 
 class Post(models.Model):
   image = models.ImageField(upload_to = 'post-images/',default='DEFAULT VALUE')
